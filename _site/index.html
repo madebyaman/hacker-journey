@@ -1,38 +1,60 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-  <meta charset="utf-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-  <title>Eleventy Blog</title> 
-</head> 
-<body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hacker Journey</title>
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
   <header>
-    Site Header
-    <a href="/">Home</a>
-  </header> 
-  <main> 
-    
-  <article>
-    <h1>
-      <a href="/posts/webpack-jquery-react/">Learn How to Use Webpack 4 With JQuery and React</a>
-    </h1>
-    <time datetime="2020-01-31T00:00:00.000Z">January 31, 2020</time>
-    <div>In the land of JS, bundlers like webpack, browserify are necessary evil.</div>
-    <a href="/posts/webpack-jquery-react/"
-      aria-label="Read more on Learn How to Use Webpack 4 With JQuery and React">Read more</a>
-  </article>
+    <div class="container">
+      <a href="/" class="logo">Hacker Journey</a>
+    </div>
+  </header>
+  <main>
+      <div class="hero">
+    <div class="container flex">
+      <div class="flex-column">
+        <h2>About</h2>
+        <p>Hey I'm Aman Thakur. I am a front end developer and love working with modern JS. I often blog about my coding adventures here.</p>
+        <p>I initially started my career as a marketer and then switched to developer when exposed to programming. Because of my initial career, I am also very keen to develop apps that are conversion-friendly, fast and rank well in search engines.</p>
+      </div>
+      <div class="flex-column">
+        <img class="hero-image" src="https://res.cloudinary.com/dksughwo7/image/upload/v1580483332/hacker-journey/aman.png" alt="aman" />
+      </div>
+    </div>
+  </div>
+  <div class="posts">
+    <div class="container">
+        <h2>Blog Posts</h2>
+      
+        <article>
+          <h3>
+            <a href="/posts/webpack-jquery-react/">Learn How to Use Webpack 4 With JQuery and React</a>
+          </h3>
+          <span>posted on </span><time datetime="2020-01-31T00:00:00.000Z">January 31, 2020</time>
+        </article>
+      
+        <article>
+          <h3>
+            <a href="/posts/code-splitting-react/">How to use Code Splitting in React?</a>
+          </h3>
+          <span>posted on </span><time datetime="2020-01-31T00:00:00.000Z">January 31, 2020</time>
+        </article>
+      
+    </div>
+  </div>
 
-  <article>
-    <h1>
-      <a href="/posts/code-splitting-react/">How to use Code Splitting in React?</a>
-    </h1>
-    <time datetime="2020-01-31T00:00:00.000Z">January 31, 2020</time>
-    <div>This is included on the homepage.</div>
-    <a href="/posts/code-splitting-react/"
-      aria-label="Read more on How to use Code Splitting in React?">Read more</a>
-  </article>
-
-  </main> 
-  <footer>Site Footer</footer> 
-</body> 
+  </main>
+  <footer>
+    <div class="container">
+      <p class="social-links">Follow me on
+        <a href="https://github.com/madebyaman">GitHub</a>
+        and
+        <a href="https://twitter.com/imamanthakur">Twitter</a>
+      </p>
+    </div>
+  </footer>
+</body>
 </html>

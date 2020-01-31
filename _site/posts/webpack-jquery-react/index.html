@@ -1,25 +1,29 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-  <meta charset="utf-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-  <title>Eleventy Blog</title> 
-</head> 
-<body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hacker Journey</title>
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
   <header>
-    Site Header
-    <a href="/">Home</a>
-  </header> 
-  <main> 
-    <article>
-  <h1>Learn How to Use Webpack 4 With JQuery and React</h1> 
-  <time datetime="2020-01-31T00:00:00.000Z">January 31, 2020</time> 
+    <div class="container">
+      <a href="/" class="logo">Hacker Journey</a>
+    </div>
+  </header>
+  <main>
+    <article class="single-post post-container">
+  <h1>Learn How to Use Webpack 4 With JQuery and React</h1>
+  <div class="time">
+    <span>Posted on </span><time datetime="2020-01-31T00:00:00.000Z">January 31, 2020</time>
+  </div>
   <p>In the land of JS, bundlers like webpack, browserify are necessary evil.</p>
-<p>Webpack is one such tool. It processes your application, checks for all the dependencies that your project is using and based on that build one or more bundles. Not only that, you can also do code splitting, code transformations and so much more.</p>
-<p>On top of that, Webpack is massively popular. Lot of companies are using Webpack because of the incredible customization it offers and its performance.</p>
+<p>Webpack is one such tool. It processes your application, checks for all the dependencies that your project is using and based on that builds one or more bundles. Not only that, you can also do code splitting, code transformations and so much more.</p>
+<p>On top of that, Webpack is massively popular. Lot of companies are using Webpack because of the incredible power and customization it offers.</p>
 <p>So let's dive in and learn about Webpack.</p>
 <h2>Project 1: Setting up Webpack with JQuery</h2>
-<p>For the first project, we will be using Webpack to bundle to JQuery app. Let's start by cloning the project files from github repo.</p>
+<p>For the first project, we will be using Webpack to bundle to JQuery app. Let's start by cloning the <a href="https://github.com/madebyaman/webpack-project">project files from github repo</a>.</p>
 <p>As you can see this is very basic app, which inserts &quot;Hello world&quot;.</p>
 <p>So go ahead and run <code>npm install</code> to install the dependencies. The first thing you'll notice when you open index.html in your browser is that it doesn't show anything.</p>
 <p>That is because we have yet to install Webpack and bundle JQuery.</p>
@@ -30,8 +34,8 @@
 <p>What is webpack-cli?</p>
 <p>It is a command line interface that allows you to interact with webpack from your terminal.</p>
 <h3>Step 2: Create Webpack Config File</h3>
-<p>Now, you need to create webpack.config.js file in the root of your project.</p>
-<p>Now in webpack.config.js file, let's create entry and output point.</p>
+<p>Go ahead and create webpack.config.js file in the root of your project.</p>
+<p>In webpack.config.js file, let's create entry and output point.</p>
 <pre><code>const path = require(&quot;path&quot;);
 module.exports = {
   entry: path.join(__dirname + &quot;/app.js&quot;),
@@ -53,7 +57,7 @@ module.exports = {
 <p>Once you have created config file, you can simply run webpack in your command line or terminal to bundle your project in bundle.js.</p>
 <pre><code>webpack
 </code></pre>
-<p>You can also set a script in your package.json file:</p>
+<p>Or, you can also set a script in your package.json file:</p>
 <pre><code>&quot;dev&quot;: &quot;./node_modules/.bin/webpack --mode development&quot;
 </code></pre>
 <p>With this you can simply run <code>npm run dev</code> or <code>yarn dev</code> to bundle your project.</p>
@@ -62,7 +66,7 @@ module.exports = {
 <pre><code>git checkout React
 </code></pre>
 <p>Now install the dependencies using <code>npm install</code>. If you now run the <code>npm run dev</code> you'll see an error like this:</p>
-<p><img src="Learn%20How%20to%20Use%20Webpack%204%20With%20JQuery%20and%20React/Screen_Shot_2020-01-30_at_9.04.17_PM.png" alt="Learn%20How%20to%20Use%20Webpack%204%20With%20JQuery%20and%20React/Screen_Shot_2020-01-30_at_9.04.17_PM.png"></p>
+<p><img src="https://res.cloudinary.com/dksughwo7/image/upload/v1580479616/hacker-journey/webpack-error.png" alt="Webpack Error"></p>
 <p>This is because you need babel to work with JSX files. So let's do that.</p>
 <h3>Step 1: Install Babel loaders</h3>
 <p>We need to install four babel dependencies:</p>
@@ -213,7 +217,16 @@ module.exports = {
 <p>But your learning doesn't end here. The technologies move fast and you should keep up with it. You can follow <a href="https://webpack.js.org/concepts/">official webpack documentation</a> to keep up with this fast changing environment.</p>
 
 </article>
-  </main> 
-  <footer>Site Footer</footer> 
-</body> 
+
+  </main>
+  <footer>
+    <div class="container">
+      <p class="social-links">Follow me on
+        <a href="https://github.com/madebyaman">GitHub</a>
+        and
+        <a href="https://twitter.com/imamanthakur">Twitter</a>
+      </p>
+    </div>
+  </footer>
+</body>
 </html>

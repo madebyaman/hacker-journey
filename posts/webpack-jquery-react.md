@@ -3,21 +3,21 @@ layout: post-layout.njk
 title: Learn How to Use Webpack 4 With JQuery and React
 date: 2020-01-31
 tags: ['Webpack', 'post']
-excerpt: In the land of JS, bundlers like webpack, browserify are necessary evil. 
+excerpt: In the land of JS, bundlers like webpack, browserify are necessary evil.
 ---
-In the land of JS, bundlers like webpack, browserify are necessary evil. 
+In the land of JS, bundlers like webpack, browserify are necessary evil.
 
-Webpack is one such tool. It processes your application, checks for all the dependencies that your project is using and based on that build one or more bundles. Not only that, you can also do code splitting, code transformations and so much more.
+Webpack is one such tool. It processes your application, checks for all the dependencies that your project is using and based on that builds one or more bundles. Not only that, you can also do code splitting, code transformations and so much more.
 
-On top of that, Webpack is massively popular. Lot of companies are using Webpack because of the incredible customization it offers and its performance.
+On top of that, Webpack is massively popular. Lot of companies are using Webpack because of the incredible power and customization it offers.
 
 So let's dive in and learn about Webpack.
 
 ## Project 1: Setting up Webpack with JQuery
 
-For the first project, we will be using Webpack to bundle to JQuery app. Let's start by cloning the project files from github repo.
+For the first project, we will be using Webpack to bundle to JQuery app. Let's start by cloning the [project files from github repo](https://github.com/madebyaman/webpack-project).
 
-As you can see this is very basic app, which inserts "Hello world". 
+As you can see this is very basic app, which inserts "Hello world".
 
 So go ahead and run `npm install` to install the dependencies. The first thing you'll notice when you open index.html in your browser is that it doesn't show anything.
 
@@ -35,14 +35,14 @@ It is a command line interface that allows you to interact with webpack from you
 
 ### Step 2: Create Webpack Config File
 
-Now, you need to create webpack.config.js file in the root of your project.
+Go ahead and create webpack.config.js file in the root of your project.
 
-Now in webpack.config.js file, let's create entry and output point.
+In webpack.config.js file, let's create entry and output point.
 
     const path = require("path");
     module.exports = {
       entry: path.join(__dirname + "/app.js"),
-    
+
       output: {
         path: path.join(__dirname + "/"),
         filename: "bundle.js",
@@ -63,7 +63,7 @@ Once you have created config file, you can simply run webpack in your command li
 
     webpack
 
-You can also set a script in your package.json file:
+Or, you can also set a script in your package.json file:
 
     "dev": "./node_modules/.bin/webpack --mode development"
 
@@ -77,7 +77,7 @@ In this project, we will be using Webpack to bundle React code. So let's branch 
 
 Now install the dependencies using `npm install`. If you now run the `npm run dev` you'll see an error like this:
 
-![Learn%20How%20to%20Use%20Webpack%204%20With%20JQuery%20and%20React/Screen_Shot_2020-01-30_at_9.04.17_PM.png](Learn%20How%20to%20Use%20Webpack%204%20With%20JQuery%20and%20React/Screen_Shot_2020-01-30_at_9.04.17_PM.png)
+![Webpack Error](https://res.cloudinary.com/dksughwo7/image/upload/v1580479616/hacker-journey/webpack-error.png)
 
 This is because you need babel to work with JSX files. So let's do that.
 
@@ -100,16 +100,16 @@ So let's install them:
 You now need to use babel with webpack, so change your webpack.config.js to match the following:
 
     const path = require("path");
-    
+
     module.exports = {
       entry: path.join(__dirname + "/app.js"),
-    
+
       output: {
         path: path.join(__dirname + "/"),
         filename: "bundle.js",
         publicPath: "/"
       },
-    
+
       module: {
         rules: [
           {
@@ -144,13 +144,13 @@ After doing this, you again need to tell Webpack about this, so let's change the
     const path = require("path");
     module.exports = {
       entry: path.join(__dirname + "/app.js"),
-    
+
       output: {
         path: path.join(__dirname + "/"),
         filename: "bundle.js",
         publicPath: "/"
       },
-    
+
       module: {
         rules: [
           {
@@ -207,20 +207,20 @@ Next, you want to add it your config:
 
     const path = require("path");
     const UglifyPlugin = require("uglifyjs-webpack-plugin");
-    
+
     module.exports = {
       entry: path.join(__dirname + "/app.js"),
-    
+
       output: {
         path: path.join(__dirname + "/"),
         filename: "bundle.js",
         publicPath: "/"
       },
-    
+
       optimization: {
         minimizer: [new UglifyPlugin()]
       },
-    
+
       module: {
         rules: [
           {
@@ -253,6 +253,6 @@ If you now run, `npm run build` , the `bundle.js` will be minified, unreadable c
 
 Congratulations.
 
-Now you know the basic of webpack. You can easily configure a project and get started using Webpack. 
+Now you know the basic of webpack. You can easily configure a project and get started using Webpack.
 
 But your learning doesn't end here. The technologies move fast and you should keep up with it. You can follow [official webpack documentation](https://webpack.js.org/concepts/) to keep up with this fast changing environment.

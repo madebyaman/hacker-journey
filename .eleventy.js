@@ -8,6 +8,7 @@ module.exports = function (eleventyConfig) {
     return moment(date).format('LL');
   });
   eleventyConfig.addShortcode('excerpt', article => extractExcerpt(article));
+   eleventyConfig.addPassthroughCopy("css");
 }
 
 function extractExcerpt(article) {

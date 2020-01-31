@@ -1,26 +1,27 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-  <meta charset="utf-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-  <title>Eleventy Blog</title> 
-</head> 
-<body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hacker Journey</title>
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
   <header>
-    Site Header
-    <a href="/">Home</a>
-  </header> 
-  <main> 
-    <article>
-  <h1>How to use Code Splitting in React?</h1> 
-  <time datetime="2020-01-31T00:00:00.000Z">January 31, 2020</time> 
-  <!-- Excerpt Start -->
-<p>This is included on the homepage.</p>
-<!-- Excerpt End -->
-<p>A large or even a medium sized react application contains tons of components, and methods all trying to run at the same time. This can be a problem as your application will take longer to run and might not even start on a low bandwidth network.</p>
-<p>Thankfully react has few ways in its arsenal to prevent this. Code splitting your application so it doesn't load all the components at one ago, instead it defers the loading of component until it is needed.</p>
+    <div class="container">
+      <a href="/" class="logo">Hacker Journey</a>
+    </div>
+  </header>
+  <main>
+    <article class="single-post post-container">
+  <h1>How to use Code Splitting in React?</h1>
+  <div class="time">
+    <span>Posted on </span><time datetime="2020-01-31T00:00:00.000Z">January 31, 2020</time>
+  </div>
+  <p>A large or even a medium sized react application contains tons of components, and methods all trying to run at the same time. This can be a problem as your application will take longer to run and might not even start on a low bandwidth network.</p>
+<p>Using code splitting, you can configure your React application so it doesn't load all the components at one ago, instead it defers the loading of components until they are required.</p>
 <p>Let's see how its done.</p>
-<h1>First way: import call</h1>
+<h2>First way: import call</h2>
 <p>The simplest way to defer loading of your components is through dynamic <code>import()</code>.</p>
 <pre><code>import {About} from './about'
 import {Home} from './home'
@@ -50,7 +51,7 @@ const Router = () =&gt; (
 </code></pre>
 <p>Now rest of the work will be taken care by Webpack. If you've configured webpack yourself then you might need to read this guide.</p>
 <p><a href="https://webpack.js.org/guides/code-splitting/">https://webpack.js.org/guides/code-splitting/</a></p>
-<h1>Second way: React.lazy</h1>
+<h2>Second way: React.lazy</h2>
 <p><code>React.lazy</code> is the best method to do this for you. It makes it super easy to do this on a component level.</p>
 <pre><code>import React, { lazy } from 'react';
 
@@ -90,7 +91,7 @@ const Router = () =&gt; (
 )
 </code></pre>
 <p>Suspense loads a loading state while your component is being fetched. This allows you to draw a super cool animation on the page.</p>
-<h2>How to suspend multiple components?</h2>
+<h3>How to suspend multiple components?</h3>
 <p>One of the coolest feature of <code>Suspense</code> is that <strong>it allows you to suspend multiple components even if all of them are being lazy loaded and fetched at a different time.</strong></p>
 <p>This means, if you have some kind of animation for your loading screen then you can <code>Suspense</code> to show a single loading page for all of them.</p>
 <pre><code>import React, { lazy, Suspense } from 'react';
@@ -126,13 +127,22 @@ const Router = () =&gt; (
     &lt;/Switch&gt;
 )
 </code></pre>
-<h1>Now start lazy loading your components</h1>
+<h2>Now start lazy loading your components</h2>
 <p>Great work! You've learned how to lazy load your components with <code>React.lazy</code> and then use a loading screen using <code>Suspense</code>.</p>
 <p>Now its time to start using them. Start by identifying the components you don't need immediately after loading. This can be routes, button interactions, etc.</p>
 <p>Finally let me know how you're using lazy-loading in your application.</p>
 
 </article>
-  </main> 
-  <footer>Site Footer</footer> 
-</body> 
+
+  </main>
+  <footer>
+    <div class="container">
+      <p class="social-links">Follow me on
+        <a href="https://github.com/madebyaman">GitHub</a>
+        and
+        <a href="https://twitter.com/imamanthakur">Twitter</a>
+      </p>
+    </div>
+  </footer>
+</body>
 </html>
