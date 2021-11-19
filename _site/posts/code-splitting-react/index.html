@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hacker Journey</title>
-  <link rel="stylesheet" href="/css/site.css">
+  
+  <link rel="stylesheet" href="/static/prism.css">
+  <link rel="stylesheet" href="/static/site.css">
 </head>
 <body>
   <header>
@@ -16,116 +18,116 @@
     <article class="single-post post-container">
   <h1>How to use Code Splitting in React?</h1>
   <div class="time">
-    <span>Posted on </span><time datetime="2020-01-31T00:00:00.000Z">January 31, 2020</time>
+    <span>Posted on </span><time datetime="2021-07-01T00:00:00.000Z">July 1, 2021</time>
   </div>
   <p>A large or even a medium sized react application contains tons of components, and methods all trying to run at the same time. This can be a problem as your application will take longer to run and might not even start on a low bandwidth network.</p>
 <p>Using code splitting, you can configure your React application so it doesn't load all the components at one ago, instead it defers the loading of components until they are required.</p>
 <p>Let's see how its done.</p>
 <h2>First way: import call</h2>
 <p>The simplest way to defer loading of your components is through dynamic <code>import()</code>.</p>
-<pre><code>import {About} from './about'
-import {Home} from './home'
+<pre><code class="language-js">import { About } from &quot;./about&quot;;
+import { Home } from &quot;./home&quot;;
 
 const Router = () =&gt; (
-		&lt;Switch&gt;
-      &lt;Route path=&quot;/about&quot;&gt;
-		    &lt;About /&gt;
-      &lt;/Route&gt;
-      &lt;Route path=&quot;/&quot;&gt;
-	      &lt;Home /&gt;
-      &lt;/Route&gt;
-    &lt;/Switch&gt;)
+  &lt;Switch&gt;
+    &lt;Route path=&quot;/about&quot;&gt;
+      &lt;About /&gt;
+    &lt;/Route&gt;
+    &lt;Route path=&quot;/&quot;&gt;
+      &lt;Home /&gt;
+    &lt;/Route&gt;
+  &lt;/Switch&gt;
+);
 </code></pre>
 <p>Let's say you want to delay the loading of <code>about.js</code> until about route has not been loaded.</p>
-<pre><code>import {Home} from './home'
+<pre><code class="language-js">import { Home } from &quot;./home&quot;;
 
 const Router = () =&gt; (
-		&lt;Switch&gt;
-      &lt;Route path=&quot;/about&quot;&gt;
-		    import(&quot;./about.js&quot;).then(about =&gt; about);
-      &lt;/Route&gt;
-      &lt;Route path=&quot;/&quot;&gt;
-	      &lt;Home /&gt;
-      &lt;/Route&gt;
-    &lt;/Switch&gt;)
+  &lt;Switch&gt;
+    &lt;Route path=&quot;/about&quot;&gt;import(&quot;./about.js&quot;).then(about =&gt; about);&lt;/Route&gt;
+    &lt;Route path=&quot;/&quot;&gt;
+      &lt;Home /&gt;
+    &lt;/Route&gt;
+  &lt;/Switch&gt;
+);
 </code></pre>
 <p>Now rest of the work will be taken care by Webpack. If you've configured webpack yourself then you might need to read this guide.</p>
 <p><a href="https://webpack.js.org/guides/code-splitting/">https://webpack.js.org/guides/code-splitting/</a></p>
 <h2>Second way: React.lazy</h2>
 <p><code>React.lazy</code> is the best method to do this for you. It makes it super easy to do this on a component level.</p>
-<pre><code>import React, { lazy } from 'react';
+<pre><code class="language-js">import React, { lazy } from &quot;react&quot;;
 
-const About = lazy(() =&gt; import('./About'));
+const About = lazy(() =&gt; import(&quot;./About&quot;));
 
 const Router = () =&gt; (
-		&lt;Switch&gt;
-      &lt;Route path=&quot;/about&quot;&gt;
-		    &lt;About/&gt;
-      &lt;/Route&gt;
-      &lt;Route path=&quot;/&quot;&gt;
-	      &lt;Home /&gt;
-      &lt;/Route&gt;
-    &lt;/Switch&gt;
-)
+  &lt;Switch&gt;
+    &lt;Route path=&quot;/about&quot;&gt;
+      &lt;About /&gt;
+    &lt;/Route&gt;
+    &lt;Route path=&quot;/&quot;&gt;
+      &lt;Home /&gt;
+    &lt;/Route&gt;
+  &lt;/Switch&gt;
+);
 </code></pre>
 <p>Although <code>React.lazy</code> is a wonderful way to lazy load your components, but with lazy loading your users will experience slight delay when fetching components.</p>
 <p>This can be solved by using <code>Suspense</code>.</p>
 <p>Here is how it works.</p>
-<pre><code>import React, { lazy, Suspense } from 'react';
+<pre><code class="language-js">import React, { lazy, Suspense } from &quot;react&quot;;
 
-const About = lazy(() =&gt; import('./About'));
+const About = lazy(() =&gt; import(&quot;./About&quot;));
 
 const loadingState = () =&gt; &lt;p&gt;Loading&lt;/p&gt;;
 
 const Router = () =&gt; (
-		&lt;Switch&gt;
-      &lt;Route path=&quot;/about&quot;&gt;
-				&lt;Suspense fallback={loadingState()}&gt;
-			    &lt;About/&gt;
-				&lt;/Suspense&gt;
-      &lt;/Route&gt;
-      &lt;Route path=&quot;/&quot;&gt;
-	      &lt;Home /&gt;
-      &lt;/Route&gt;
-    &lt;/Switch&gt;
-)
+  &lt;Switch&gt;
+    &lt;Route path=&quot;/about&quot;&gt;
+      &lt;Suspense fallback={loadingState()}&gt;
+        &lt;About /&gt;
+      &lt;/Suspense&gt;
+    &lt;/Route&gt;
+    &lt;Route path=&quot;/&quot;&gt;
+      &lt;Home /&gt;
+    &lt;/Route&gt;
+  &lt;/Switch&gt;
+);
 </code></pre>
 <p>Suspense loads a loading state while your component is being fetched. This allows you to draw a super cool animation on the page.</p>
 <h3>How to suspend multiple components?</h3>
 <p>One of the coolest feature of <code>Suspense</code> is that <strong>it allows you to suspend multiple components even if all of them are being lazy loaded and fetched at a different time.</strong></p>
 <p>This means, if you have some kind of animation for your loading screen then you can <code>Suspense</code> to show a single loading page for all of them.</p>
-<pre><code>import React, { lazy, Suspense } from 'react';
+<pre><code class="language-js">import React, { lazy, Suspense } from &quot;react&quot;;
 
-const About = lazy(() =&gt; import('./About'));
+const About = lazy(() =&gt; import(&quot;./About&quot;));
 
-const Users = lazy(() =&gt; import ('./Users'));
+const Users = lazy(() =&gt; import(&quot;./Users&quot;));
 
-const Dashboard = lazy(() =&gt; import ('./Dashboard'));
+const Dashboard = lazy(() =&gt; import(&quot;./Dashboard&quot;));
 
 const loadingState = () =&gt; &lt;p&gt;Loading&lt;/p&gt;;
 
 const Router = () =&gt; (
-		&lt;Switch&gt;
-      &lt;Route path=&quot;/about&quot;&gt;
-				&lt;Suspense fallback={loadingState()}&gt;
-			    &lt;About/&gt;
-				&lt;/Suspense&gt;
-      &lt;/Route&gt;
-			&lt;Route path=&quot;/users&quot;&gt;
-				&lt;Suspense fallback={loadingState()}&gt;
-			    &lt;Users/&gt;
-				&lt;/Suspense&gt;
-      &lt;/Route&gt;
-			&lt;Route path=&quot;/dashboard&quot;&gt;
-				&lt;Suspense fallback={loadingState()}&gt;
-			    &lt;Dashboard/&gt;
-				&lt;/Suspense&gt;
-      &lt;/Route&gt;
-      &lt;Route path=&quot;/&quot;&gt;
-	      &lt;Home /&gt;
-      &lt;/Route&gt;
-    &lt;/Switch&gt;
-)
+  &lt;Switch&gt;
+    &lt;Route path=&quot;/about&quot;&gt;
+      &lt;Suspense fallback={loadingState()}&gt;
+        &lt;About /&gt;
+      &lt;/Suspense&gt;
+    &lt;/Route&gt;
+    &lt;Route path=&quot;/users&quot;&gt;
+      &lt;Suspense fallback={loadingState()}&gt;
+        &lt;Users /&gt;
+      &lt;/Suspense&gt;
+    &lt;/Route&gt;
+    &lt;Route path=&quot;/dashboard&quot;&gt;
+      &lt;Suspense fallback={loadingState()}&gt;
+        &lt;Dashboard /&gt;
+      &lt;/Suspense&gt;
+    &lt;/Route&gt;
+    &lt;Route path=&quot;/&quot;&gt;
+      &lt;Home /&gt;
+    &lt;/Route&gt;
+  &lt;/Switch&gt;
+);
 </code></pre>
 <h2>Now start lazy loading your components</h2>
 <p>Great work! You've learned how to lazy load your components with <code>React.lazy</code> and then use a loading screen using <code>Suspense</code>.</p>
@@ -144,5 +146,6 @@ const Router = () =&gt; (
       </p>
     </div>
   </footer>
+  <script src="/static/prism.js"></script>
 </body>
 </html>

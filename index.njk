@@ -9,8 +9,8 @@ pagination:
   <div class="hero">
     <div class="container flex">
       <div class="flex-column">
-        <h2>About</h2>
-        <p>Hey I'm Aman Thakur. I am a front end developer and love working with modern JS. I often blog about my coding adventures here.</p>
+        <h1>Hello I'm Aman Thakur</h1>
+        <p>Hey I'm Aman Thakur. I am a front end developer and love working with WordPress and modern JS. I blog about my coding adventures here.</p>
         <p>I initially started my career as a marketer and then switched to developer when exposed to programming. Because of my initial career, I am also very keen to develop apps that are conversion-friendly, fast and rank well in search engines.</p>
       </div>
       <div class="flex-column">
@@ -18,16 +18,34 @@ pagination:
       </div>
     </div>
   </div>
-  <div class="posts">
-    <div class="container">
+  <div class="content container">
+    {% if collections.project %}
+        <h2>Projects</h2>
+        <section class="projects grid">
+        {% for post in collections.project %}
+          <a href="{{ post.url | url }}" class="card">
+            <h3>{{ post.data.title }}</h3>
+            <div>{{ post.data.excerpt }}</div>
+          </a>
+        {% endfor %}
+        </section>
+      {% endif %}
+
+
+   
+      {% if collections.post %}
+       <section class="posts">
         <h2>Blog Posts</h2>
-      {% for post in posts %}
-        <article>
-          <h3>
-            <a href="{{ post.url | url }}">{{ post.data.title }}</a>
-          </h3>
-          <span>posted on </span><time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
-        </article>
-      {% endfor %}
+        {% for post in collections.post %}
+          <article>
+            <h3>
+              <a href="{{ post.url | url }}">{{ post.data.title }}</a>
+            </h3>
+            <span>posted on </span><time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
+          </article>
+          {% endfor %}
+          </section>
+          {% endif %}
+      
     </div>
   </div>

@@ -1,10 +1,11 @@
 ---
 layout: post-layout.njk
 title: Learn How to Use Webpack 4 With JQuery and React
-date: 2020-01-31
-tags: ['Webpack', 'post']
+date: 2021-08-31
+tags: ["Webpack", "post"]
 excerpt: In the land of JS, bundlers like webpack, browserify are necessary evil.
 ---
+
 In the land of JS, bundlers like webpack, browserify are necessary evil.
 
 Webpack is one such tool. It processes your application, checks for all the dependencies that your project is using and based on that builds one or more bundles. Not only that, you can also do code splitting, code transformations and so much more.
@@ -27,7 +28,9 @@ That is because we have yet to install Webpack and bundle JQuery.
 
 In your terminal or command prompt, run:
 
-    npm install webpack webpack-cli --save-dev
+```sh
+npm install webpack webpack-cli --save-dev
+```
 
 What is webpack-cli?
 
@@ -39,16 +42,18 @@ Go ahead and create webpack.config.js file in the root of your project.
 
 In webpack.config.js file, let's create entry and output point.
 
-    const path = require("path");
-    module.exports = {
-      entry: path.join(__dirname + "/app.js"),
+```js
+const path = require("path");
+module.exports = {
+  entry: path.join(__dirname + "/app.js"),
 
-      output: {
-        path: path.join(__dirname + "/"),
-        filename: "bundle.js",
-        publicPath: "/"
-      },
-    }
+  output: {
+    path: path.join(__dirname + "/"),
+    filename: "bundle.js",
+    publicPath: "/",
+  },
+};
+```
 
 Let me explain the concept of entry and output point:
 
@@ -61,11 +66,15 @@ Good? Let's keep moving.
 
 Once you have created config file, you can simply run webpack in your command line or terminal to bundle your project in bundle.js.
 
-    webpack
+```sh
+webpack
+```
 
 Or, you can also set a script in your package.json file:
 
-    "dev": "./node_modules/.bin/webpack --mode development"
+```sh
+"dev": "./node_modules/.bin/webpack --mode development"
+```
 
 With this you can simply run `npm run dev` or `yarn dev` to bundle your project.
 
@@ -73,7 +82,9 @@ With this you can simply run `npm run dev` or `yarn dev` to bundle your project.
 
 In this project, we will be using Webpack to bundle React code. So let's branch out and checkout to a branch named `React`:
 
-    git checkout React
+```sh
+git checkout React
+```
 
 Now install the dependencies using `npm install`. If you now run the `npm run dev` you'll see an error like this:
 
@@ -93,37 +104,42 @@ We need to install four babel dependencies:
 
 So let's install them:
 
-    npm install babel-cli babel-loader @babel/core @babel/preset-env @babel/preset-react --save-dev
+```sh
+npm install babel-cli babel-loader @babel/core @babel/preset-env @babel/preset-react --save-dev
+```
 
 ### Step 2: Configure webpack file
 
 You now need to use babel with webpack, so change your webpack.config.js to match the following:
 
-    const path = require("path");
+```js
+const path = require("path");
 
-    module.exports = {
-      entry: path.join(__dirname + "/app.js"),
+module.exports = {
+  entry: path.join(__dirname + "/app.js"),
 
-      output: {
-        path: path.join(__dirname + "/"),
-        filename: "bundle.js",
-        publicPath: "/"
+  output: {
+    path: path.join(__dirname + "/"),
+    filename: "bundle.js",
+    publicPath: "/",
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+          },
+        },
       },
-
-      module: {
-        rules: [
-          {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {loader: 'babel-loader',
-              options: {
-              presets: ['@babel/preset-env',  '@babel/preset-react']
-              }
-            }
-          }
-        ]
-    	}
-    }
+    ],
+  },
+};
+```
 
 Now if you run `npm run dev` you'll successfully see the page loading. But we can further improve this project.
 
@@ -135,51 +151,59 @@ Let's configure Webpack to load CSS files as well.
 
 First you need to install `style-loader` and `css-loader`:
 
-    npm install style-loader css-loader --save-dev
+```sh
+npm install style-loader css-loader --save-dev
+```
 
 `style-loader` is webpack plugin that covers all the biolerplate to load .css, .scss, .less. While `css-loader` will resolve import calls to .css files.
 
 After doing this, you again need to tell Webpack about this, so let's change the Webpack config file like so:
 
-    const path = require("path");
-    module.exports = {
-      entry: path.join(__dirname + "/app.js"),
+```js
+const path = require("path");
+module.exports = {
+  entry: path.join(__dirname + "/app.js"),
 
-      output: {
-        path: path.join(__dirname + "/"),
-        filename: "bundle.js",
-        publicPath: "/"
-      },
+  output: {
+    path: path.join(__dirname + "/"),
+    filename: "bundle.js",
+    publicPath: "/",
+  },
 
-      module: {
-        rules: [
-          {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-              loader: "babel-loader",
-              options: {
-                presets: ["@babel/preset-env", "@babel/preset-react"]
-              }
-            }
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
-          {
-            test: /\.css$/,
-            use: [{ loader: "style-loader" }, { loader: "css-loader" }]
-          }
-        ]
-      }
-    };
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+      },
+    ],
+  },
+};
+```
 
 Let's create a style.css file:
 
-    body {
-    	background: acqua;
-    }
+```css
+body {
+  background: acqua;
+}
+```
 
 And import it into app.js file like so:
 
-    import './style.css';
+```js
+import "./style.css";
+```
 
 ### How to install Webpack Dev Server?
 
@@ -187,11 +211,15 @@ I'm sure you must have been fed up by opening your index.html file in your brows
 
 First, install the dev server by running the following command in your terminal:
 
-    npm install webpack-dev-server -D
+```bash
+npm install webpack-dev-server -D
+```
 
 Next, change dev script in your `package.json` file like so:
 
-    "dev": "./node_modules/.bin/webpack-dev-server --mode development"
+```js
+"dev": "./node_modules/.bin/webpack-dev-server --mode development"
+```
 
 Now if your run `npm run dev` you can use go to [http://localhost:8080/](http://localhost:8080/) to view your page.
 
@@ -201,49 +229,55 @@ Until now, we have only been creating a development build. But we need to create
 
 To do this, we first need to install uglifyjs-webpack-plugin. This plugin will create minify the code, so as to make sure it is as small as possible.
 
-    npm install uglifyjs-webpack-plugin --save-dev
+```sh
+npm install uglifyjs-webpack-plugin --save-dev
+```
 
 Next, you want to add it your config:
 
-    const path = require("path");
-    const UglifyPlugin = require("uglifyjs-webpack-plugin");
+```js
+const path = require("path");
+const UglifyPlugin = require("uglifyjs-webpack-plugin");
 
-    module.exports = {
-      entry: path.join(__dirname + "/app.js"),
+module.exports = {
+  entry: path.join(__dirname + "/app.js"),
 
-      output: {
-        path: path.join(__dirname + "/"),
-        filename: "bundle.js",
-        publicPath: "/"
-      },
+  output: {
+    path: path.join(__dirname + "/"),
+    filename: "bundle.js",
+    publicPath: "/",
+  },
 
-      optimization: {
-        minimizer: [new UglifyPlugin()]
-      },
+  optimization: {
+    minimizer: [new UglifyPlugin()],
+  },
 
-      module: {
-        rules: [
-          {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-              loader: "babel-loader",
-              options: {
-                presets: ["@babel/preset-env", "@babel/preset-react"]
-              }
-            }
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
-          {
-            test: /\.css$/,
-            use: [{ loader: "style-loader" }, { loader: "css-loader" }]
-          }
-        ]
-      }
-    };
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+      },
+    ],
+  },
+};
+```
 
- Once that's done, lets add another script to `package.json` file:
+Once that's done, lets add another script to `package.json` file:
 
-    "build": "./node_modules/.bin/webpack --mode production"
+```js
+"build": "./node_modules/.bin/webpack --mode production"
+```
 
 That's it!
 

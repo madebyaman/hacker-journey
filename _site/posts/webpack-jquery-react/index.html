@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hacker Journey</title>
-  <link rel="stylesheet" href="/css/site.css">
+  
+  <link rel="stylesheet" href="/static/prism.css">
+  <link rel="stylesheet" href="/static/site.css">
 </head>
 <body>
   <header>
@@ -16,7 +18,7 @@
     <article class="single-post post-container">
   <h1>Learn How to Use Webpack 4 With JQuery and React</h1>
   <div class="time">
-    <span>Posted on </span><time datetime="2020-01-31T00:00:00.000Z">January 31, 2020</time>
+    <span>Posted on </span><time datetime="2021-08-31T00:00:00.000Z">August 31, 2021</time>
   </div>
   <p>In the land of JS, bundlers like webpack, browserify are necessary evil.</p>
 <p>Webpack is one such tool. It processes your application, checks for all the dependencies that your project is using and based on that builds one or more bundles. Not only that, you can also do code splitting, code transformations and so much more.</p>
@@ -29,23 +31,23 @@
 <p>That is because we have yet to install Webpack and bundle JQuery.</p>
 <h3>Step 1: Install Webpack</h3>
 <p>In your terminal or command prompt, run:</p>
-<pre><code>npm install webpack webpack-cli --save-dev
+<pre><code class="language-sh">npm install webpack webpack-cli --save-dev
 </code></pre>
 <p>What is webpack-cli?</p>
 <p>It is a command line interface that allows you to interact with webpack from your terminal.</p>
 <h3>Step 2: Create Webpack Config File</h3>
 <p>Go ahead and create webpack.config.js file in the root of your project.</p>
 <p>In webpack.config.js file, let's create entry and output point.</p>
-<pre><code>const path = require(&quot;path&quot;);
+<pre><code class="language-js">const path = require(&quot;path&quot;);
 module.exports = {
   entry: path.join(__dirname + &quot;/app.js&quot;),
 
   output: {
     path: path.join(__dirname + &quot;/&quot;),
     filename: &quot;bundle.js&quot;,
-    publicPath: &quot;/&quot;
+    publicPath: &quot;/&quot;,
   },
-}
+};
 </code></pre>
 <p>Let me explain the concept of entry and output point:</p>
 <ul>
@@ -55,15 +57,15 @@ module.exports = {
 <p>Good? Let's keep moving.</p>
 <h3>Step 3: Bundle with Webpack</h3>
 <p>Once you have created config file, you can simply run webpack in your command line or terminal to bundle your project in bundle.js.</p>
-<pre><code>webpack
+<pre><code class="language-sh">webpack
 </code></pre>
 <p>Or, you can also set a script in your package.json file:</p>
-<pre><code>&quot;dev&quot;: &quot;./node_modules/.bin/webpack --mode development&quot;
+<pre><code class="language-sh">&quot;dev&quot;: &quot;./node_modules/.bin/webpack --mode development&quot;
 </code></pre>
 <p>With this you can simply run <code>npm run dev</code> or <code>yarn dev</code> to bundle your project.</p>
 <h2>Project 2: Setting up Webpack with React</h2>
 <p>In this project, we will be using Webpack to bundle React code. So let's branch out and checkout to a branch named <code>React</code>:</p>
-<pre><code>git checkout React
+<pre><code class="language-sh">git checkout React
 </code></pre>
 <p>Now install the dependencies using <code>npm install</code>. If you now run the <code>npm run dev</code> you'll see an error like this:</p>
 <p><img src="https://res.cloudinary.com/dksughwo7/image/upload/v1580479616/hacker-journey/webpack-error.png" alt="Webpack Error"></p>
@@ -78,11 +80,11 @@ module.exports = {
 <li>babel/preset-react: It transforms react specific things like JSX and so on.</li>
 </ol>
 <p>So let's install them:</p>
-<pre><code>npm install babel-cli babel-loader @babel/core @babel/preset-env @babel/preset-react --save-dev
+<pre><code class="language-sh">npm install babel-cli babel-loader @babel/core @babel/preset-env @babel/preset-react --save-dev
 </code></pre>
 <h3>Step 2: Configure webpack file</h3>
 <p>You now need to use babel with webpack, so change your webpack.config.js to match the following:</p>
-<pre><code>const path = require(&quot;path&quot;);
+<pre><code class="language-js">const path = require(&quot;path&quot;);
 
 module.exports = {
   entry: path.join(__dirname + &quot;/app.js&quot;),
@@ -90,41 +92,7 @@ module.exports = {
   output: {
     path: path.join(__dirname + &quot;/&quot;),
     filename: &quot;bundle.js&quot;,
-    publicPath: &quot;/&quot;
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {loader: 'babel-loader',
-          options: {
-          presets: ['@babel/preset-env',  '@babel/preset-react']
-          }
-        }
-      }
-    ]
-	}
-}
-</code></pre>
-<p>Now if you run <code>npm run dev</code> you'll successfully see the page loading. But we can further improve this project.</p>
-<h3>How to load CSS?</h3>
-<p>At this point, if you try to create CSS file and import it into <code>app.js</code>, it won't work. Because Webpack doesn't know how to deal with this file.</p>
-<p>Let's configure Webpack to load CSS files as well.</p>
-<p>First you need to install <code>style-loader</code> and <code>css-loader</code>:</p>
-<pre><code>npm install style-loader css-loader --save-dev
-</code></pre>
-<p><code>style-loader</code> is webpack plugin that covers all the biolerplate to load .css, .scss, .less. While <code>css-loader</code> will resolve import calls to .css files.</p>
-<p>After doing this, you again need to tell Webpack about this, so let's change the Webpack config file like so:</p>
-<pre><code>const path = require(&quot;path&quot;);
-module.exports = {
-  entry: path.join(__dirname + &quot;/app.js&quot;),
-
-  output: {
-    path: path.join(__dirname + &quot;/&quot;),
-    filename: &quot;bundle.js&quot;,
-    publicPath: &quot;/&quot;
+    publicPath: &quot;/&quot;,
   },
 
   module: {
@@ -135,42 +103,77 @@ module.exports = {
         use: {
           loader: &quot;babel-loader&quot;,
           options: {
-            presets: [&quot;@babel/preset-env&quot;, &quot;@babel/preset-react&quot;]
-          }
-        }
+            presets: [&quot;@babel/preset-env&quot;, &quot;@babel/preset-react&quot;],
+          },
+        },
+      },
+    ],
+  },
+};
+</code></pre>
+<p>Now if you run <code>npm run dev</code> you'll successfully see the page loading. But we can further improve this project.</p>
+<h3>How to load CSS?</h3>
+<p>At this point, if you try to create CSS file and import it into <code>app.js</code>, it won't work. Because Webpack doesn't know how to deal with this file.</p>
+<p>Let's configure Webpack to load CSS files as well.</p>
+<p>First you need to install <code>style-loader</code> and <code>css-loader</code>:</p>
+<pre><code class="language-sh">npm install style-loader css-loader --save-dev
+</code></pre>
+<p><code>style-loader</code> is webpack plugin that covers all the biolerplate to load .css, .scss, .less. While <code>css-loader</code> will resolve import calls to .css files.</p>
+<p>After doing this, you again need to tell Webpack about this, so let's change the Webpack config file like so:</p>
+<pre><code class="language-js">const path = require(&quot;path&quot;);
+module.exports = {
+  entry: path.join(__dirname + &quot;/app.js&quot;),
+
+  output: {
+    path: path.join(__dirname + &quot;/&quot;),
+    filename: &quot;bundle.js&quot;,
+    publicPath: &quot;/&quot;,
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: &quot;babel-loader&quot;,
+          options: {
+            presets: [&quot;@babel/preset-env&quot;, &quot;@babel/preset-react&quot;],
+          },
+        },
       },
       {
         test: /\.css$/,
-        use: [{ loader: &quot;style-loader&quot; }, { loader: &quot;css-loader&quot; }]
-      }
-    ]
-  }
+        use: [{ loader: &quot;style-loader&quot; }, { loader: &quot;css-loader&quot; }],
+      },
+    ],
+  },
 };
 </code></pre>
 <p>Let's create a style.css file:</p>
-<pre><code>body {
-	background: acqua;
+<pre><code class="language-css">body {
+  background: acqua;
 }
 </code></pre>
 <p>And import it into app.js file like so:</p>
-<pre><code>import './style.css';
+<pre><code class="language-js">import &quot;./style.css&quot;;
 </code></pre>
 <h3>How to install Webpack Dev Server?</h3>
 <p>I'm sure you must have been fed up by opening your index.html file in your browser. Let's solve that issue by using <code>webpack-dev-server</code>.</p>
 <p>First, install the dev server by running the following command in your terminal:</p>
-<pre><code>npm install webpack-dev-server -D
+<pre><code class="language-bash">npm install webpack-dev-server -D
 </code></pre>
 <p>Next, change dev script in your <code>package.json</code> file like so:</p>
-<pre><code>&quot;dev&quot;: &quot;./node_modules/.bin/webpack-dev-server --mode development&quot;
+<pre><code class="language-js">&quot;dev&quot;: &quot;./node_modules/.bin/webpack-dev-server --mode development&quot;
 </code></pre>
 <p>Now if your run <code>npm run dev</code> you can use go to <a href="http://localhost:8080/">http://localhost:8080/</a> to view your page.</p>
 <h3>How to create production build?</h3>
 <p>Until now, we have only been creating a development build. But we need to create production build if we want to deploy the project.</p>
 <p>To do this, we first need to install uglifyjs-webpack-plugin. This plugin will create minify the code, so as to make sure it is as small as possible.</p>
-<pre><code>npm install uglifyjs-webpack-plugin --save-dev
+<pre><code class="language-sh">npm install uglifyjs-webpack-plugin --save-dev
 </code></pre>
 <p>Next, you want to add it your config:</p>
-<pre><code>const path = require(&quot;path&quot;);
+<pre><code class="language-js">const path = require(&quot;path&quot;);
 const UglifyPlugin = require(&quot;uglifyjs-webpack-plugin&quot;);
 
 module.exports = {
@@ -179,11 +182,11 @@ module.exports = {
   output: {
     path: path.join(__dirname + &quot;/&quot;),
     filename: &quot;bundle.js&quot;,
-    publicPath: &quot;/&quot;
+    publicPath: &quot;/&quot;,
   },
 
   optimization: {
-    minimizer: [new UglifyPlugin()]
+    minimizer: [new UglifyPlugin()],
   },
 
   module: {
@@ -194,20 +197,20 @@ module.exports = {
         use: {
           loader: &quot;babel-loader&quot;,
           options: {
-            presets: [&quot;@babel/preset-env&quot;, &quot;@babel/preset-react&quot;]
-          }
-        }
+            presets: [&quot;@babel/preset-env&quot;, &quot;@babel/preset-react&quot;],
+          },
+        },
       },
       {
         test: /\.css$/,
-        use: [{ loader: &quot;style-loader&quot; }, { loader: &quot;css-loader&quot; }]
-      }
-    ]
-  }
+        use: [{ loader: &quot;style-loader&quot; }, { loader: &quot;css-loader&quot; }],
+      },
+    ],
+  },
 };
 </code></pre>
 <p>Once that's done, lets add another script to <code>package.json</code> file:</p>
-<pre><code>&quot;build&quot;: &quot;./node_modules/.bin/webpack --mode production&quot;
+<pre><code class="language-js">&quot;build&quot;: &quot;./node_modules/.bin/webpack --mode production&quot;
 </code></pre>
 <p>That's it!</p>
 <p>If you now run, <code>npm run build</code> , the <code>bundle.js</code> will be minified, unreadable code and that's what we need for production.</p>
@@ -228,5 +231,6 @@ module.exports = {
       </p>
     </div>
   </footer>
+  <script src="/static/prism.js"></script>
 </body>
 </html>
