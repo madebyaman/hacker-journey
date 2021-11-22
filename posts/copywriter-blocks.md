@@ -8,7 +8,7 @@ excerpt: This is a plugin containing 5 blocks for Copywriter WP Theme.
 
 This plugin contains 5 blocks.
 
-All of them are highly customizable and translation ready. Nearly all of them offers support for:
+All of them are highly customizable and translation-ready. Nearly all of them offers support for:
 
 - Changing text alignment
 - Changing background color
@@ -37,7 +37,7 @@ Support for width is added in `block.json` by:
 
 ![Author Block](/static/images/author.png)
 
-This block allows user to change background color, text color. This is achieved by using `InspectorControls` component:
+This block allows the user to change background color, text color. This is achieved by using the `InspectorControls` component:
 
 ```js
 <InspectorControls>
@@ -94,13 +94,13 @@ In this block, I used a `RangeControl` component which controls the opacity for 
 ## Call To Action
 
 ![Call to Action Block](/static/images/call-to-action.png)
-This block is a simple block which displays title and a button. It offers user to customize background color, and button colors.
+This block is a simple block that displays a title and a button. It offers the user to customize background color and button colors.
 
 The unique feature I added in this block is support for changing button size and button rounding options.
 
 ![Button size and shape options for call to action block](/static/images/button-size-and-shape.png)
 
-This is achived by first adding these options:
+I did this by first adding button options:
 
 ```js
 const buttonSizeOptions = [
@@ -118,7 +118,7 @@ const buttonShapeOptions = [
 ];
 ```
 
-Then calling them through `SelectControl` component:
+Then calling them through the `SelectControl` component:
 
 ```js
 <SelectControl
@@ -150,7 +150,7 @@ Hero block is highly customizable. It offers customization options like:
 - Changing font size
 - Changing button colors
 
-Besides these customization options, I also added custom styles in `block.json` file. This allows user to quickly modify the look of the block without changing options.
+Besides these customization options, I also added custom styles in the `block.json` file. This allows the user to quickly modify the look of the block without changing options.
 
 ![different styles for hero block](/static/images/styles-for-hero-block.png)
 
@@ -174,7 +174,7 @@ I did this by first adding styles in `block.json`:
 ]
 ```
 
-Then adding CSS Custom Properties which can be found in `style.scss` file:
+Then adding CSS Custom Properties which can be found in the `style.scss` file:
 
 ```css
 .wp-block-copywriter-blocks-hero-block {
@@ -231,3 +231,5 @@ This is done by this piece of code in `edit.js`:
   );
 }
 ```
+
+[Visit the GitHub repository >>](https://github.com/madebyaman/copywriter-blocks)

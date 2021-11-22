@@ -45,3 +45,7 @@ I have added custom fonts from Google Fonts library:
 ```php
 wp_enqueue_style('hacker-wp-fonts', 'https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap', ['hacker-wp-style'], HACKER_WP_VERSION);
 ```
+
+[Visit the live site >>](http://hacker.unfiddle.com/)
+
+[Visit the GitHub repository >>](https://github.com/madebyaman/hacker-wp-theme)
