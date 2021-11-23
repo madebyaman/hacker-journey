@@ -4,9 +4,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("dateIso", (date) => {
     return moment(date).toISOString();
   });
-  eleventyConfig.addFilter("dateReadable", (date) => {
-    return moment(date).format("LL");
-  });
+  eleventyConfig.addFilter("dateReadable", (date) => moment(date).format("LL"));
   eleventyConfig.addShortcode("excerpt", (article) => extractExcerpt(article));
   eleventyConfig.addPassthroughCopy("static");
 };
