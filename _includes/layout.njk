@@ -3,7 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hacker Journey</title>
+  {% if title %}
+    <title>{{ title }}</title>
+  {% else %}
+    <title>Hacker Journey</title>
+  {% endif %}
+
   <link rel="stylesheet" href="/static/prism.css">
   <link rel="stylesheet" href="/static/site.css">
 </head>
