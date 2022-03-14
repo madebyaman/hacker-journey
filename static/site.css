@@ -207,6 +207,7 @@ ul {
 
 li {
   list-style-type: inherit;
+  margin: 15px 0;
 }
 
 hr {
@@ -413,6 +414,7 @@ pre[class*='language-'] {
 .single-post ol,
 .single-post ul {
   margin-bottom: 2rem;
+  margin-left: 2rem;
 }
 
 .single-post ol {
