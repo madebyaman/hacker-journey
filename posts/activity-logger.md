@@ -7,8 +7,12 @@ excerpt: An app to help you track your time and stay in control.
 ---
 
 There are time tracking apps like Rescue Timer. However the problem with those kinds of apps is that they run in the background. So in the present moment you’d never know that you are wasting your time. It is only when you are reviewing your day that you realize you have wasted your time.
+
 This is where the idea for an activity logger app was born.
+
 The basic concept is that the app displays a table where each row signifies an hour. After each hour, you’d want to come back to the application and enter the activity you were doing.
+
+[Check out the loom video to see a quick overview of my app](https://www.loom.com/share/d891a2f8abd24ee6811035892d08b971?sharedAppSource=personal_library)
 
 ## Tech Stack
 

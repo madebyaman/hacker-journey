@@ -7,7 +7,10 @@ excerpt: An app to help you write, publish, and share your book notes.
 ---
 
 I love reading books and taking notes. But it is hard if you want to share those notes with other people. People like Derek Sivers, Nat Eliason, use their blog to share their book notes. A blog is not an ideal place to share your book notes.
+
 Hence the idea of Bummaries. The app allows people to write their book notes or summaries and share it with other people.
+
+[Check out the loom video to see a quick overview of my app](https://www.loom.com/share/efded017554a4782b07040aa4e5ef925?sharedAppSource=personal_library)
 
 ## The Tech Stack
 
