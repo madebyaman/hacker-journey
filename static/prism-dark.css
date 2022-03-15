@@ -141,3 +141,10 @@ pre[class*='language-'] {
 .token.italic {
   font-style: italic;
 }
+
+/* MY settings
+-------------------------------- */
+pre[class*='language-'] {
+  padding: 1.5rem;
+  margin: 2rem 0;
+}

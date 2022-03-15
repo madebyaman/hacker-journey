@@ -23,7 +23,7 @@ pagination:
     {% if collections.project %}
         <h2>Projects</h2>
         <section class="projects grid">
-        {% for post in collections.project %}
+        {% for post in collections.project | reverse %}
           <a href="{{ post.url | url }}" class="card">
             <h3>{{ post.data.title }}</h3>
             <div>{{ post.data.excerpt }}</div>
@@ -37,7 +37,7 @@ pagination:
       {% if collections.post %}
        <section class="posts">
         <h2>Blog Posts</h2>
-        {% for post in collections.post %}
+        {% for post in collections.post | reverse %}
           <article>
             <h3>
               <a href="{{ post.url | url }}">{{ post.data.title }}</a>

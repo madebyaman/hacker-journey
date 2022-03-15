@@ -312,8 +312,7 @@ figure {
 code,
 pre {
   font-family: Menlo, Roboto Mono, Courier New, monospace;
-  font-size: 13px;
-  color: #b3b9c5;
+  font-size: 16px;
   direction: ltr;
   text-align: left;
   white-space: pre-wrap;
