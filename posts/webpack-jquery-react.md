@@ -28,7 +28,7 @@ That is because we have yet to install Webpack and bundle JQuery.
 
 In your terminal or command prompt, run:
 
-```sh
+```shell
 npm install webpack webpack-cli --save-dev
 ```
 
@@ -66,13 +66,13 @@ Good? Let's keep moving.
 
 Once you have created config file, you can simply run webpack in your command line or terminal to bundle your project in bundle.js.
 
-```sh
+```shell
 webpack
 ```
 
 Or, you can also set a script in your package.json file:
 
-```sh
+```shell
 "dev": "./node_modules/.bin/webpack --mode development"
 ```
 
@@ -82,7 +82,7 @@ With this you can simply run `npm run dev` or `yarn dev` to bundle your project.
 
 In this project, we will be using Webpack to bundle React code. So let's branch out and checkout to a branch named `React`:
 
-```sh
+```shell
 git checkout React
 ```
 
@@ -104,7 +104,7 @@ We need to install four babel dependencies:
 
 So let's install them:
 
-```sh
+```shell
 npm install babel-cli babel-loader @babel/core @babel/preset-env @babel/preset-react --save-dev
 ```
 
@@ -151,7 +151,7 @@ Let's configure Webpack to load CSS files as well.
 
 First you need to install `style-loader` and `css-loader`:
 
-```sh
+```shell
 npm install style-loader css-loader --save-dev
 ```
 
@@ -229,7 +229,7 @@ Until now, we have only been creating a development build. But we need to create
 
 To do this, we first need to install uglifyjs-webpack-plugin. This plugin will create minify the code, so as to make sure it is as small as possible.
 
-```sh
+```shell
 npm install uglifyjs-webpack-plugin --save-dev
 ```
 

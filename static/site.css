@@ -239,6 +239,14 @@ blockquote {
   margin: 30px;
 }
 
+/* Prism Styles
+-------------------------------------------- */
+@import './prism.css';
+
+@media (prefers-color-scheme: dark) {
+  @import './prism-dark.css';
+}
+
 /* Headings
 --------------------------------------------- */
 
@@ -324,16 +332,6 @@ pre {
   -webkit-font-smoothing: antialiased;
 }
 
-pre code {
-  display: block;
-  padding: 1.5rem;
-  overflow: auto;
-  background-color: #333;
-  border: 0;
-  font-size: 14px !important;
-}
-
-code[class*='language-'],
 pre[class*='language-'] {
   background-color: #f9fafb;
 }
@@ -368,12 +366,10 @@ pre[class*='language-'] {
   background-color: transparent;
 }
 
-code[class*='language-'],
 pre[class*='language-'] {
   background-color: var(--background-action);
 }
 
-code[class*='language-'],
 pre[class*='language-'] {
   color: var(--color-heading);
   text-shadow: none;
@@ -537,7 +533,7 @@ footer p {
 }
 
 .posts span,
-.single-post span {
+.single-post .time > span {
   font-style: italic;
 }
 

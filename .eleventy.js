@@ -1,9 +1,16 @@
 const moment = require("moment");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+
 moment.locale("en");
+
 module.exports = function (eleventyConfig) {
+
+  eleventyConfig.addPlugin(syntaxHighlight);
+
   eleventyConfig.addFilter("dateIso", (date) => {
     return moment(date).toISOString();
   });
+
   eleventyConfig.addFilter("dateReadable", (date) => moment(date).format("LL"));
   eleventyConfig.addShortcode("excerpt", (article) => extractExcerpt(article));
   eleventyConfig.addPassthroughCopy("static");

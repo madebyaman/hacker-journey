@@ -12,7 +12,7 @@ Also since I often find myself looking at the Gutenberg Handbook and the its Git
 
 In this tutorial we will create a basic Hero block for Gutenberg Editor.
 
-![](https://paper-attachments.dropbox.com/s_C2D426647B1FDC7329AC5047003CABD739C0E88BF9A4DCE13C6C53C2DB1F3405_1636456520048_CleanShot+2021-11-09+at+16.44.51.png)
+![Gutenberg plugin we are going to build](https://paper-attachments.dropbox.com/s_C2D426647B1FDC7329AC5047003CABD739C0E88BF9A4DCE13C6C53C2DB1F3405_1636456520048_CleanShot+2021-11-09+at+16.44.51.png)
 
 While creating this block, we will learn some basic concepts like:
 
@@ -41,7 +41,7 @@ I'd recommend using `@wordpress/create-block`, it has all the necessary files. P
 
 Start by running the following command in your `plugins` folder.
 
-```sh
+```shell
 npx @wordpress/create-block test-hero-block
 cd test-hero-block
 ```
@@ -57,7 +57,7 @@ Let's break down the hero block to various components:
 - First, we have a heading section with the `h1` tag.
 - We also have a paragraph section.
 - Finally, we have two buttons to get visitors to take action.
-  ![](https://paper-attachments.dropbox.com/s_C2D426647B1FDC7329AC5047003CABD739C0E88BF9A4DCE13C6C53C2DB1F3405_1636849282941_attributes.png)
+  ![buttons for the hero block](https://paper-attachments.dropbox.com/s_C2D426647B1FDC7329AC5047003CABD739C0E88BF9A4DCE13C6C53C2DB1F3405_1636849282941_attributes.png)
 
 We will get started by editing `block.json` which simply contains [metadata](https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/) about the block you are building.
 Open `block.json` in the root folder. You need to edit it to make it look like this.
