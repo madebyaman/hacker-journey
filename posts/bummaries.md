@@ -257,3 +257,6 @@ export const checkUsernameExist = async (username: string, userId?: string) => {
   }
 };
 ```
+
+[View live](https:bummaries.app/)
+[View on Github](https://github.com/madebyaman/book-notes)

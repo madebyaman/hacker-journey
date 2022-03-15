@@ -307,3 +307,6 @@ The solution I implemented was using the mutate method of useSWR. Using mutate, 
     mutate('/logs', newBlocks, false);
   };
 ```
+
+[View live](https://activity-logger.vercel.app/)
+[View on Github](https://github.com/madebyaman/activity-logger)
