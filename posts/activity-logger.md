@@ -14,6 +14,10 @@ The basic concept is that the app displays a table where each row signifies an h
 
 [Check out the loom video to see a quick overview of my app](https://www.loom.com/share/d891a2f8abd24ee6811035892d08b971?sharedAppSource=personal_library)
 
+[View live](https://activity-logger.vercel.app/)
+
+[View on Github](https://github.com/madebyaman/activity-logger)
+
 ## Tech Stack
 
 - NextJS for frontend and backend
@@ -311,6 +315,3 @@ The solution I implemented was using the mutate method of useSWR. Using mutate, 
     mutate('/logs', newBlocks, false);
   };
 ```
-
-[View live](https://activity-logger.vercel.app/)
-[View on Github](https://github.com/madebyaman/activity-logger)

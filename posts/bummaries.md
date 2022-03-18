@@ -12,6 +12,10 @@ Hence the idea of Bummaries. The app allows people to write their book notes or 
 
 [Check out the loom video to see a quick overview of my app](https://www.loom.com/share/efded017554a4782b07040aa4e5ef925?sharedAppSource=personal_library)
 
+[View live](https:bummaries.app/)
+
+[View on Github](https://github.com/madebyaman/book-notes)
+
 ## The Tech Stack
 
 For building the app, I went with the following tech stack:
@@ -260,6 +264,3 @@ export const checkUsernameExist = async (username: string, userId?: string) => {
   }
 };
 ```
-
-[View live](https:bummaries.app/)
-[View on Github](https://github.com/madebyaman/book-notes)
